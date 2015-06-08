@@ -5,8 +5,8 @@
 <struts-config>
 	<form-beans>
 	<form-bean
-		name="reserve"
-		type="jp.level_five.bookingsystem.ReserveForm">
+		name="reserveform"
+		type="jp.levelfive.bookingsystem.ReserveForm">
 		<form-property name="title" type="java.lang.String"/>
 		<form-property name="name" type="java.lang.String"/>
 		<form-property name="month" type="int" />
@@ -14,15 +14,16 @@
 		<form-property name="hourFrom" type="int" />
 		<form-property name="minFrom" type="int" />
 		<form-property name="hourTo" type="int" />
-		<form-property name="minTo" type="java.lang.String"/>
+		<form-property name="minTo" type="int"/>
+		<form-property name="password" type="java.lang.String"/>
 		</form-bean>
 	</form-beans>
 
 	<action-mappings>
 	<action
-		name="reserve"
+		name="reserveform"
 		path="/reserve"
-		type="jp.level_five.bookingsystem.ReserveAction"
+		type="jp.levelfive.bookingsystem.ReserveAction"
 		input="/reserve.jsp"/>
 	</action-mappings>
 </struts-config>

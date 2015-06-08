@@ -9,7 +9,7 @@
   <display-name>BookingSystem</display-name>
 
   <servlet>
-  	<servlet-name>reserve</servlet-name>
+  	<servlet-name>action</servlet-name>
   	<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
   	<init-param>
   		<param-name>config</param-name>
@@ -19,7 +19,7 @@
   </servlet>
 
   <servlet-mapping>
-  	<servlet-name>reserve</servlet-name>
+  	<servlet-name>action</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
 

@@ -9,7 +9,7 @@
 <title>Booking System</title>
 </head>
 
-<frameset rows="100,*">
+<frameset rows="50,*">
 <frame src="reserve.jsp" name="frame1" title="予約フォーム">
 
 <frameset cols="500,*">
