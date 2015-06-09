@@ -8,6 +8,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 public class ReserveForm extends ActionForm {
+	{
+		System.out.println("loadReserveForm.java");
+	}
 	private static final long serialVersionUID = 1L;
 	private String title;
 	private String name;
@@ -94,10 +97,10 @@ public class ReserveForm extends ActionForm {
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
-		System.out.println("reset");
+		System.out.println("resetReserveForm");
 		try {
 			request.setCharacterEncoding("UTF-8");
-			// this.setT("お名前は？");
+			this.setName("お名前は？");
 		} catch (UnsupportedEncodingException ex) {
 			ex.printStackTrace();
 		}

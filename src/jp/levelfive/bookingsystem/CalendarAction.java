@@ -9,12 +9,18 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class CalendarAction extends Action {
+	{
+		System.out.println("loadCalendarAction.java");
+	}
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// CalendarForm calendarFrom = (CalendarForm) form;
-		return mapping.getInputForward();
+		{
+			System.out.println("executeCalendarAction");
+		}
+		// request.setAttribute("msg", arg1);
+		return mapping.findForward("index.jsp");
 	}
 }

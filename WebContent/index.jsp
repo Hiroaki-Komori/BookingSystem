@@ -36,15 +36,19 @@
 	分まで<html:select property="minTo" />
 	削除パスワード<html:password property="password" />
 	</td></tr>
-
+	</html:form>
 	</table>
 	</center>
-	</html:form>
+	<bean:write name="reserveform" property="name" scope="request"/>
 
 <table>
 	<tr>
 		<td colspan="7">
 		mon
+	<html:form method="POST" action="calendar.do">
+		<html:text property="year">
+		</html:text>
+		</html:form>
 		</td>
 	</tr>
 
@@ -57,8 +61,14 @@
 		<th>fri</th>
 		<th>sat</th>
 	</tr>
+	<tr><td>
+	<%-- bean:write name="calendarform" property="year" scope="request" /--%>
+	</td></tr>
 
-	<html:form method="POST" action="calendar.do"/>
+	<!-- html:text name="calendar.do" property="year"/-->
+
+	<%-- bean:write name="calendar" property="year"></bean:write>
+	<bean:write name="calendar" property="month"></bean:write--%>
 <%--	<logic:iterate id="row" name="calendarform">
 	<tr>
 	<logic:iterate id="col" name="row">

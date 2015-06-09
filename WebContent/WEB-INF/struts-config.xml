@@ -20,10 +20,10 @@
 
 	<form-bean
 		name="calendarform"
-		type="jp.levelfive.bookingsystem.CalendarForm">
+		type="jp.levelfive.bookingsystem.CalendarBean">
 		<form-property name="year" type="int" />
 		<form-property name="month" type="int" />
-		<form-property name="calendarMatrix" type="int[][]" />
+		<!-- form-property name="calendarMatrix" type="int[][]" /-->
 		</form-bean>
 
 	</form-beans>
@@ -43,7 +43,10 @@
 		name="calendarform"
 		path="/calendar"
 		type="jp.levelfive.bookingsystem.CalendarAction"
-		input="/index.jsp"/>
+		scope="request"
+		input="/index.jsp">
+		<forward name="index.jsp" path="/index.jsp"/>
+		</action>
 
 	</action-mappings>
 

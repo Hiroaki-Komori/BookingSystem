@@ -9,10 +9,17 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class ReserveAction extends Action {
+	{
+		System.out.println("loadReserveAction.java");
+	}
+
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		{
+			System.out.println("executeReserveAction");
+		}
 		ReserveForm reserveForm = (ReserveForm) form;
 		String input = reserveForm.getName();
 		System.out.println("こんにちは、" + input + "さん！");

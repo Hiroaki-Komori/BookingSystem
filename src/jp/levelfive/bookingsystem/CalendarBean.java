@@ -1,9 +1,16 @@
 package jp.levelfive.bookingsystem;
 
-public class CalendarBean implements java.io.Serializable {
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+
+public class CalendarBean extends ActionForm {
+	private static final long serialVersionUID = 2L;
 	private int year;
 	private int month;
-	private int date;
 
 	public int getYear() {
 		return year;
@@ -11,10 +18,6 @@ public class CalendarBean implements java.io.Serializable {
 
 	public int getMonth() {
 		return month;
-	}
-
-	public int getDate() {
-		return date;
 	}
 
 	public void setYear(int year) {
@@ -25,7 +28,19 @@ public class CalendarBean implements java.io.Serializable {
 		this.month = month;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		System.out.println("resetCalendarBean");
+		super.reset(mapping, request);
+		try {
+			request.setCharacterEncoding("UTF-8");
+			// this.setYear(Calendar.YEAR);
+			// this.setMonth(Calendar.MONTH);
+			this.setYear(2015);
+			this.setMonth(6);
+		} catch (UnsupportedEncodingException ex) {
+			ex.printStackTrace();
+		}
 	}
+
 }
