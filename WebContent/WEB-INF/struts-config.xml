@@ -14,16 +14,37 @@
 		<form-property name="hourFrom" type="int" />
 		<form-property name="minFrom" type="int" />
 		<form-property name="hourTo" type="int" />
-		<form-property name="minTo" type="int"/>
+		<form-property name="minTo" type="int" />
 		<form-property name="password" type="java.lang.String"/>
 		</form-bean>
+
+	<form-bean
+		name="calendarform"
+		type="jp.levelfive.bookingsystem.CalendarForm">
+		<form-property name="year" type="int" />
+		<form-property name="month" type="int" />
+		<form-property name="calendarMatrix" type="int[][]" />
+		</form-bean>
+
 	</form-beans>
+
 
 	<action-mappings>
 	<action
 		name="reserveform"
 		path="/reserve"
 		type="jp.levelfive.bookingsystem.ReserveAction"
-		input="/reserve.jsp"/>
+		scope="request"
+		input="/index.jsp">
+		<forward name="index.jsp" path="/index.jsp" />
+		</action>
+
+	<action
+		name="calendarform"
+		path="/calendar"
+		type="jp.levelfive.bookingsystem.CalendarAction"
+		input="/index.jsp"/>
+
 	</action-mappings>
+
 </struts-config>

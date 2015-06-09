@@ -1,6 +1,11 @@
 package jp.levelfive.bookingsystem;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 public class ReserveForm extends ActionForm {
 	private static final long serialVersionUID = 1L;
@@ -86,16 +91,16 @@ public class ReserveForm extends ActionForm {
 		this.password = pass;
 	}
 
-	// @Override
-	// public void reset(ActionMapping mapping, HttpServletRequest request) {
-	// super.reset(mapping, request);
-	// System.out.println("reset");
-	// try {
-	// request.setCharacterEncoding("UTF-8");
-	// this.setT("お名前は？");
-	// } catch (UnsupportedEncodingException ex) {
-	// ex.printStackTrace();
-	// }
-	// }
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		super.reset(mapping, request);
+		System.out.println("reset");
+		try {
+			request.setCharacterEncoding("UTF-8");
+			// this.setT("お名前は？");
+		} catch (UnsupportedEncodingException ex) {
+			ex.printStackTrace();
+		}
+	}
 
 }

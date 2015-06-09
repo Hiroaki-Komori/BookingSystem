@@ -9,17 +9,5 @@
 <title></title>
 </head>
 <body>
-	<html:form method="POST" action="reserve.do">
-	タイトル<html:text property="title" />
-	予約者名<html:text property="name" />
-	月<html:select property="month" />
-	日<html:select property="day" />
-	時<html:select property="hourFrom" />
-	分<html:select property="minFrom" />
-	～
-	時<html:select property="hourTo" />
-	分まで<html:select property="minTo" />
-	削除パスワード<html:password property="password" />
-	</html:form>
 </body>
 </html:html>
