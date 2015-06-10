@@ -101,6 +101,7 @@ public class ReserveForm extends ActionForm {
 		try {
 			request.setCharacterEncoding("UTF-8");
 			this.setName("お名前は？");
+			this.setTitle("title");
 		} catch (UnsupportedEncodingException ex) {
 			ex.printStackTrace();
 		}

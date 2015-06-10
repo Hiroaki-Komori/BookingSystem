@@ -20,7 +20,8 @@ public class CalendarAction extends Action {
 		{
 			System.out.println("executeCalendarAction");
 		}
-		// request.setAttribute("msg", arg1);
+		CalendarBean calendarBean = (CalendarBean)form;
+		request.setAttribute("msg", calendarBean);
 		return mapping.findForward("index.jsp");
 	}
 }

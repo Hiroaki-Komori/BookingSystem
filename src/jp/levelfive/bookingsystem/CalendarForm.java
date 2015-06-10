@@ -15,22 +15,19 @@ public class CalendarForm extends ActionForm {
 	public static final long serialVersionUID = 2L;
 	private int year;
 	private int month;
-	private int[] calendarMatrix = new int[5 * 7];
+	//private ArrayList<String[]> calendarArray = new ArrayList<>();
+	private String[][] calendarMatrix = new String[6][7];
 
 	// private CalendarBean[] calBean = null;
 
-	public int[] getCalendarMatrix() {
-		return calendarMatrix;
-	}
-
-	public void setCalendarMatrix(int[] calMatrix) {
-		this.calendarMatrix = calMatrix;
-	}
-
-	public CalendarForm(int year, int month) {
+	public void setCalendarMatrix(int year, int month) {
 		this.year = year;
 		this.month = month;
 		calcFields();
+	}
+
+	public String[][] getCalendarMatrix() {
+		return calendarMatrix;
 	}
 
 	public void setYear(int year) {
@@ -55,24 +52,41 @@ public class CalendarForm extends ActionForm {
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.clear();
-
-		calendar.set(year, month - 1, 1);
+		calendar.set(this.year, this.month, 1);
 		startDay = calendar.get(Calendar.DAY_OF_WEEK);
-
 		calendar.add(Calendar.MONTH, 1);
 		calendar.add(Calendar.DATE, -1);
 		lastDate = calendar.get(Calendar.DATE);
 
-		int row = 0;
-		int col = startDay - 1;
-		for (int date = 1; date <= lastDate; date++) {
-			calendarMatrix[row * 7 + col] = date;
-			if (col == 6) {
-				row++;
-				col = 0;
-			} else {
-				col++;
+		for (int row = 0, date=1; date < lastDate; row++) {
+			for (int col = 0; col < 7; col++) {
+				if (row == 0 && col < startDay-1) {
+					calendarMatrix[row][col] = "";
+				} else if (date > lastDate) {
+					calendarMatrix[row][col] = "";
+				} else {
+					calendarMatrix[row][col] = String.valueOf(date);
+					date++;
+				}
 			}
+		}
+
+		// int row = 0;
+		// int col = startDay - 1;
+		// for (int date = 1; date < lastDate; date++) {
+		// calendarMatrix[row][col] = String.valueOf(date);
+		// if (col == 6) {
+		// row++;
+		// col = 0;
+		// } else {
+		// col++;
+		// }
+		// }
+		for (String[] strArray : calendarMatrix) {
+			for (String str : strArray) {
+				System.out.print(str+"\t");
+			}
+			System.out.println();
 		}
 	}
 
@@ -82,10 +96,9 @@ public class CalendarForm extends ActionForm {
 		super.reset(mapping, request);
 		try {
 			request.setCharacterEncoding("UTF-8");
-			// this.setYear(Calendar.YEAR);
-			// this.setMonth(Calendar.MONTH);
-			this.setYear(2015);
-			this.setMonth(6);
+			this.setYear(Calendar.getInstance().get(Calendar.YEAR));
+			this.setMonth(Calendar.getInstance().get(Calendar.MONTH));
+			this.setCalendarMatrix(this.year, this.month);
 		} catch (UnsupportedEncodingException ex) {
 			ex.printStackTrace();
 		}
