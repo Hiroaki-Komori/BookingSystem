@@ -58,14 +58,15 @@
 	<logic:iterate id="row" name="calendarform" property="calendarMatrix">
 	<tr>
 	<logic:iterate id="col" name="row">
-	<td>てす
-	<%-- bean:write name="calendarform" property="calendarMatrix"/--%>
+	<td>
+	${col}
 	</td>
 	</logic:iterate>
 	</tr>
 	</logic:iterate>
 
 </table>
+
 
 
 </html:html>

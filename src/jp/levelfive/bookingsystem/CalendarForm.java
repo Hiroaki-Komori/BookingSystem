@@ -15,10 +15,29 @@ public class CalendarForm extends ActionForm {
 	public static final long serialVersionUID = 2L;
 	private int year;
 	private int month;
-	//private ArrayList<String[]> calendarArray = new ArrayList<>();
+	// private ArrayList<String[]> calendarArray = new ArrayList<>();
+	// private String[][] calMatrixRows = new String[6][];
+	// private String[] calMatrixCols = new String[7];
+
 	private String[][] calendarMatrix = new String[6][7];
 
 	// private CalendarBean[] calBean = null;
+
+	// public String[][] getCalMatrixRows() {
+	// return calMatrixRows;
+	// }
+	//
+	// public void setCalMatrixRows(String[][] calMatrixRows) {
+	// this.calMatrixRows = calMatrixRows;
+	// }
+	//
+	// public String[] getCalMatrixCols() {
+	// return calMatrixCols;
+	// }
+	//
+	// public void setCalMatrixCols(String[] calMatrixCols) {
+	// this.calMatrixCols = calMatrixCols;
+	// }
 
 	public void setCalendarMatrix(int year, int month) {
 		this.year = year;
@@ -58,9 +77,9 @@ public class CalendarForm extends ActionForm {
 		calendar.add(Calendar.DATE, -1);
 		lastDate = calendar.get(Calendar.DATE);
 
-		for (int row = 0, date=1; date < lastDate; row++) {
+		for (int row = 0, date = 1; row < 6; row++) {
 			for (int col = 0; col < 7; col++) {
-				if (row == 0 && col < startDay-1) {
+				if (row == 0 && col < startDay - 1) {
 					calendarMatrix[row][col] = "";
 				} else if (date > lastDate) {
 					calendarMatrix[row][col] = "";
@@ -84,7 +103,7 @@ public class CalendarForm extends ActionForm {
 		// }
 		for (String[] strArray : calendarMatrix) {
 			for (String str : strArray) {
-				System.out.print(str+"\t");
+				System.out.print(str + "\t");
 			}
 			System.out.println();
 		}
@@ -103,4 +122,5 @@ public class CalendarForm extends ActionForm {
 			ex.printStackTrace();
 		}
 	}
+
 }

@@ -50,6 +50,6 @@
 
 	</action-mappings>
 
-	<message-resources parameter="jp.levelfive.bookingsystem.MessageResources"></message-resources>
+	<message-resources parameter="jp.levelfive.bookingsystem.MessageResources"/>
 
 </struts-config>
