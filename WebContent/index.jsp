@@ -83,7 +83,7 @@ div#wrap {
 		</div>
 
 		<div class="calendar">
-			<table width="500">
+			<table width="500" border="1">
 				<tr>
 					<td colspan="7"><html:form method="POST" action="calendar.do" />
 						<bean:write name="calendarform" property="year" scope="request" />
@@ -107,9 +107,12 @@ div#wrap {
 					property="calendarMatrix">
 					<tr align="center">
 						<logic:iterate id="col" name="row">
-						<%= if(${col} == 3){} %>
-							<c:if test="${${col}==3}"><td rowspan="3">${col}</td>></c:if>
-							<td>${col}</td>
+						<logic:equal name = "col" value="3">
+							<td rowspan="3">${col}</td>
+						</logic:equal>
+						<logic:notEqual name = "col" value="3">
+						<td>${col}</td>
+						</logic:notEqual>
 						</logic:iterate>
 					</tr>
 				</logic:iterate>
@@ -122,11 +125,15 @@ div#wrap {
 					<td>応接室</td>
 					<td>リフレッシュルーム</td>
 				</tr>
-
-<%--			<logic:iterate id="timetable" name="room" property="timeTableArray" scope="request">
+<%--
+			<logic:iterate id="timetable" name="room" property="timeTableArray" scope="request">
 				<tr height="12">
 					<logic:iterate id="room" name="timetable">
-						<td>${room}</td>
+					<logic:greaterThan name="room" value="1">
+					<bean:parameter name="room" id="usetime"/>
+						<td rowspan="usetime">${title}　削除</td>
+					</logic:greaterThan>
+						<td></td>
 					</logic:iterate>
 				</tr>
 				</logic:iterate>
