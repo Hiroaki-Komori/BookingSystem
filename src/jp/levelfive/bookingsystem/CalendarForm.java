@@ -12,6 +12,8 @@ public class CalendarForm extends ActionForm {
 	public static final long serialVersionUID = 2L;
 	private int year;
 	private int month;
+	private int displayingYear;
+	private int displayingMonth;
 	private String[][] calendarMatrix = new String[6][7];
 
 	public void setCalendarMatrix(int year, int month) {
@@ -33,11 +35,31 @@ public class CalendarForm extends ActionForm {
 	}
 
 	public void setMonth(int month) {
+		System.out.println("set" + month);
 		this.month = month;
 	}
 
 	public int getMonth() {
+		System.out.println("get" + this.month);
 		return month;
+	}
+
+	public int getDisplayingYear() {
+		return displayingYear;
+	}
+
+	public void setDisplayingYear(int displayingYear) {
+		this.displayingYear = displayingYear;
+	}
+
+	public int getDisplayingMonth() {
+		return displayingMonth;
+	}
+
+	public void setDisplayingMonth(int displayingMonth) {
+		System.out.println();
+		System.out.println(displayingMonth);
+		this.displayingMonth = displayingMonth;
 	}
 
 	private void calcFields() {
@@ -64,26 +86,24 @@ public class CalendarForm extends ActionForm {
 				}
 			}
 		}
-		// for (String[] strArray : calendarMatrix) {
-		// for (String str : strArray) {
-		// System.out.print(str + "\t");
-		// }
-		// System.out.println();
-		// }
 	}
 
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		System.out.println("resetCalendarForm");
+		System.out.println("dispYear: " + this.displayingMonth);
+
 		super.reset(mapping, request);
 		try {
 			request.setCharacterEncoding("UTF-8");
+			this.setYear(displayingYear);
+			this.setMonth(displayingMonth);
 			this.setYear(Calendar.getInstance().get(Calendar.YEAR));
 			this.setMonth(Calendar.getInstance().get(Calendar.MONTH));
 			this.setCalendarMatrix(this.year, this.month);
+			System.out.println("currentMonth is:" + this.displayingMonth);
 		} catch (UnsupportedEncodingException ex) {
 			ex.printStackTrace();
 		}
 	}
-
 }

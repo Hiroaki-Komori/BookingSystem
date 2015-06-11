@@ -83,14 +83,18 @@ div#wrap {
 			<table width="500" border="1">
 				<tr>
 					<td colspan="7">
-					<html:form method="GET" action="calendar.do"/>
-						<html:link action="back.do"> <<
+					<html:form method="GET" action="/calendar" />
+						<html:link action="back">
+						 <<
 						</html:link>
-							<bean:write name="calendarform" property="year" scope="request" />
-							<bean:write name="calendarform" property="month" scope="request" />
-						<html:link action="forward.do" scope="request"> >>
+						<%--bean:write name="calendarform" property="year" scope="request" />
+						<bean:write name="calendarform" property="month" scope="request" /--%>
+						<html:hidden name="calendarform" property="displayingYear" value="10" />
+						<html:hidden name="calendarform" property="displayingMonth" value="10" />
+							<html:link action="forward">
+						>>
 						</html:link>
-					</td>
+						</td>
 				</tr>
 				<tr>
 					<th>日</th>
@@ -108,12 +112,13 @@ div#wrap {
 					property="calendarMatrix" indexId="rowId">
 					<tr align="center">
 						<logic:iterate id="col" name="row" indexId="colId">
-						<html:link action="settimetable">
-							<td>${col}</td>
-							</html:link>
+							<td><html:link action="settimetable">
+							${col}
+							</html:link></td>
 						</logic:iterate>
 					</tr>
 				</logic:iterate>
+
 			</table>
 		</div>
 		<div class="timeTable">
@@ -124,18 +129,18 @@ div#wrap {
 					<td>リフレッシュルーム</td>
 				</tr>
 				<html:form method="POST" action="settimetable.do">
-				<logic:iterate id="room" name="timetableform" property="timeTable"
-					scope="request">
-					<tr height="12">
-						<logic:iterate id="books" name="room">
-							<logic:greaterThan name="books" value="1">
-								<bean:parameter name="books" id="usetime" />
-								<td rowspan="usetime">${title}削除</td>
-							</logic:greaterThan>
-							<td></td>
-						</logic:iterate>
-					</tr>
-				</logic:iterate>
+					<logic:iterate id="room" name="timetableform" property="timeTable"
+						indexId="roomNumber" scope="request">
+						<tr height="12">
+							<logic:iterate id="book" name="room" indexId="timeNumber">
+								<logic:notEqual name="book" value="4">
+									<%-- bean:parameter name="book" id="usetime" / --%>
+									<td rowspan="usetime">${title}削除</td>
+								</logic:notEqual>
+								<td></td>
+							</logic:iterate>
+						</tr>
+					</logic:iterate>
 				</html:form>
 			</table>
 		</div>
