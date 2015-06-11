@@ -39,6 +39,7 @@ public class ReserveDAO {
 				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 
 	//予約の詳細を取得する
@@ -69,6 +70,7 @@ public class ReserveDAO {
 				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 
 
@@ -102,6 +104,7 @@ public class ReserveDAO {
 				e.printStackTrace();
 				}
 		}
+		return -1;
 	}
 
 //予約を削除する
@@ -127,9 +130,8 @@ public class ReserveDAO {
 				e.printStackTrace();
 			}
 		}
+		return -1;
 	}
-
-
 }
 
 

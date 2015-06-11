@@ -17,8 +17,7 @@ public class CalendarAction extends Action {
 			System.out.println("executeCalendarAction");
 		}
 		CalendarForm calendarForm = (CalendarForm) form;
-		calendarForm.setYear(calendarForm.getYear());
-		calendarForm.setMonth(calendarForm.getMonth());
+		calendarForm.setCalendarMatrix(CalendarForm.getCurrentYear(), CalendarForm.getCurrentMonth());
 		return mapping.getInputForward();
 	}
 }

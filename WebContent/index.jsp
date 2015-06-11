@@ -82,19 +82,16 @@ div#wrap {
 		<div class="calendar">
 			<table width="500" border="1">
 				<tr>
-					<td colspan="7">
-					<html:form method="GET" action="/calendar" />
-						<html:link action="back">
+					<td colspan="7"><html:form method="GET" action="/calendar">
+							<html:link action="back">
 						 <<
 						</html:link>
-						<%--bean:write name="calendarform" property="year" scope="request" />
-						<bean:write name="calendarform" property="month" scope="request" /--%>
-						<html:hidden name="calendarform" property="displayingYear" value="10" />
-						<html:hidden name="calendarform" property="displayingMonth" value="10" />
+							<bean:write name="calendarform" property="year" scope="request" />
+							<bean:write name="calendarform" property="month" scope="request" />
 							<html:link action="forward">
 						>>
 						</html:link>
-						</td>
+						</html:form></td>
 				</tr>
 				<tr>
 					<th>日</th>

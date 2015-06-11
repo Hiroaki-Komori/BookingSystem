@@ -13,16 +13,17 @@ public class SetCalendarForward extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		{
-			System.out.println("executeCalendarForwardAction");
-		}
 		CalendarForm calendarForm = (CalendarForm) form;
-		if (calendarForm.getMonth() + 1 == 12) {
-			calendarForm.setYear(calendarForm.getYear() + 1);
-			calendarForm.setMonth(1);
+		int year = CalendarForm.getCurrentYear();
+		int month = CalendarForm.getCurrentMonth();
+		if (month == 12) {
+			CalendarForm.setCurrentYear(year + 1);
+			CalendarForm.setCurrentMonth(1);
 		} else {
-			calendarForm.setMonth(calendarForm.getMonth() + 1);
+			CalendarForm.setCurrentMonth(month + 1);
+			calendarForm.setCalendarMatrix(year,month);
 		}
+		System.out.println("month++");
 		return mapping.getInputForward();
 	}
 }

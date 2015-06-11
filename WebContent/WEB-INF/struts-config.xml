@@ -19,8 +19,6 @@
 		<form-bean name="calendarform" type="jp.levelfive.bookingsystem.CalendarForm">
 			<form-property name="year" type="int" />
 			<form-property name="month" type="int" />
-			<form-property name="displayingYear" type="int" />
-			<form-property name="displayingMonth" type="int" />
 			<form-property name="calendarMatrix" type="String[][]" />
 		</form-bean>
 
@@ -49,7 +47,7 @@
 		<action name="calendarform" path="/forward"
 			type="jp.levelfive.bookingsystem.SetCalendarForward" scope="request"
 			input="/index.jsp" forward="index.jsp">
-			<forward name="index.jsp" path="../index.jsp" />
+			<forward name="index.jsp" path="/index.jsp" />
 		</action>
 
 		<action name="calendarform" path="/back"
