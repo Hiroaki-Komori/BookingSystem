@@ -8,17 +8,22 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class CalendarAction extends Action {
+public class SetTimeTable extends Action {
+	{
+		System.out.println("loadSetTimeTableDate.java");
+	}
+
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		{
-			System.out.println("executeCalendarAction");
+			System.out.println("executeSetTimeTableAction");
 		}
-		CalendarForm calendarForm = (CalendarForm) form;
-		calendarForm.setYear(calendarForm.getYear());
-		calendarForm.setMonth(calendarForm.getMonth());
+		TimeTableForm timeTableForm = (TimeTableForm) form;
+		int date = timeTableForm.getDate();
+		timeTableForm.setTimeTable(date);
+		timeTableForm.setReserveList(date);
 		return mapping.getInputForward();
 	}
 }

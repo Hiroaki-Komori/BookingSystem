@@ -2,7 +2,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html:html>
 <head>
@@ -24,7 +24,7 @@ div#wrap {
 
 .reserveForm {
 	height: 100px;
-	width: 600px;
+	width: 100%;
 	potision: top;
 	margin: 0 auto;
 }
@@ -49,7 +49,7 @@ div#wrap {
 	empty-cells: show;
 }
 
-.table2 tr td{
+.table2 tr td {
 	border: solid 1px #000000;
 	border-collapse: collapse;
 	empty-cells: show;
@@ -63,14 +63,12 @@ div#wrap {
 		<div class="reserveForm">
 			<table>
 				<html:form method="POST" action="reserve.do">
-
 					<tr>
 						<td>タイトル<html:text property="title" /> 予約者名<html:text
 								property="name" />
 						</td>
 						<td rowspan=2><html:submit value="予約" /></td>
 					</tr>
-
 					<tr>
 						<td>月<html:select property="month" /> 日<html:select
 								property="day" /> 時<html:select property="hourFrom" /> 分<html:select
@@ -81,16 +79,19 @@ div#wrap {
 				</html:form>
 			</table>
 		</div>
-
 		<div class="calendar">
 			<table width="500" border="1">
 				<tr>
-					<td colspan="7"><html:form method="POST" action="calendar.do" />
-						<bean:write name="calendarform" property="year" scope="request" />
-						<bean:write name="calendarform" property="month" scope="request" />
+					<td colspan="7">
+					<html:form method="GET" action="calendar.do"/>
+						<html:link action="back.do"> <<
+						</html:link>
+							<bean:write name="calendarform" property="year" scope="request" />
+							<bean:write name="calendarform" property="month" scope="request" />
+						<html:link action="forward.do" scope="request"> >>
+						</html:link>
 					</td>
 				</tr>
-
 				<tr>
 					<th>日</th>
 					<th>月</th>
@@ -104,15 +105,12 @@ div#wrap {
 					<td></td>
 				</tr>
 				<logic:iterate id="row" name="calendarform"
-					property="calendarMatrix">
+					property="calendarMatrix" indexId="rowId">
 					<tr align="center">
-						<logic:iterate id="col" name="row">
-						<logic:equal name = "col" value="3">
-							<td rowspan="3">${col}</td>
-						</logic:equal>
-						<logic:notEqual name = "col" value="3">
-						<td>${col}</td>
-						</logic:notEqual>
+						<logic:iterate id="col" name="row" indexId="colId">
+						<html:link action="settimetable">
+							<td>${col}</td>
+							</html:link>
 						</logic:iterate>
 					</tr>
 				</logic:iterate>
@@ -125,19 +123,20 @@ div#wrap {
 					<td>応接室</td>
 					<td>リフレッシュルーム</td>
 				</tr>
-<%--
-			<logic:iterate id="timetable" name="room" property="timeTableArray" scope="request">
-				<tr height="12">
-					<logic:iterate id="room" name="timetable">
-					<logic:greaterThan name="room" value="1">
-					<bean:parameter name="room" id="usetime"/>
-						<td rowspan="usetime">${title}　削除</td>
-					</logic:greaterThan>
-						<td></td>
-					</logic:iterate>
-				</tr>
+				<html:form method="POST" action="settimetable.do">
+				<logic:iterate id="room" name="timetableform" property="timeTable"
+					scope="request">
+					<tr height="12">
+						<logic:iterate id="books" name="room">
+							<logic:greaterThan name="books" value="1">
+								<bean:parameter name="books" id="usetime" />
+								<td rowspan="usetime">${title}削除</td>
+							</logic:greaterThan>
+							<td></td>
+						</logic:iterate>
+					</tr>
 				</logic:iterate>
---%>
+				</html:form>
 			</table>
 		</div>
 	</div>

@@ -21,6 +21,7 @@ public class ReserveAction extends Action {
 			System.out.println("executeReserveAction");
 		}
 		ReserveForm reserveForm = (ReserveForm) form;
+		// TODO SQL文：予約の登録を試みる
 		String input = reserveForm.getName();
 		System.out.println("こんにちは、" + input + "さん！");
 		return mapping.findForward("index.jsp");
