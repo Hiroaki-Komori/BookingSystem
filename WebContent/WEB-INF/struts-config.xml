@@ -16,7 +16,7 @@
 		<form-property name="hourTo" type="int" />
 		<form-property name="minTo" type="int" />
 		<form-property name="password" type="java.lang.String"/>
-	</form-bean>
+		</form-bean>
 
 	<form-bean
 		name="calendarform"
@@ -24,15 +24,7 @@
 		<form-property name="year" type="int" />
 		<form-property name="month" type="int" />
 		<form-property name="calendarMatrix" type="String[][]" />
-	</form-bean>
-
-	<form-bean
-		name="timetableform"
-		type="jp.levelfive.bookingsystem.TimeTableForm">
-		<form-property name="date" type="int"/>
-		<form-property name="timeTable" type="int[][]"/>
-		<form-property name="reserveList" type="java.util.ArrayList"/>
-	</form-bean>
+		</form-bean>
 
 	</form-beans>
 
@@ -48,35 +40,13 @@
 		</action>
 
 	<action
-		name="calendarform" path="/calendar"
+		name="calendarform"
+		path="/calendar"
 		type="jp.levelfive.bookingsystem.CalendarAction"
 		scope="request"
 		input="/index.jsp">
 		<forward name="index.jsp" path="/index.jsp"/>
-	</action>
-
-	<action
-		name="calendarform" path="/forward"
-		type="jp.levelfive.bookingsystem.SetCalendarForward"
-		scope="request"
-		input="/index.jsp"
-		forward="index.jsp">
-		<forward name="index.jsp" path="../index.jsp"/>
-	</action>
-
-	<action name="calendarform" path="/back"
-		type="jp.levelfive.bookingsystem.SetCalendarBack"
-		scope="request"
-		input="/index.jsp">
-		<forward name="index.jsp" path="/index.jsp"/>
-	</action>
-
-	<action name="timetableform" path="/settimetable"
-		type="jp.levelfive.bookingsystem.SetTimeTable"
-		scope="request"
-		input="/index.jsp">
-		<forward name="index.jsp" path="/index.jsp"/>
-	</action>
+		</action>
 
 	</action-mappings>
 

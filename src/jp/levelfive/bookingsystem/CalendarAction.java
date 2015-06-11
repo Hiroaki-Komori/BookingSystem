@@ -9,6 +9,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class CalendarAction extends Action {
+	{
+		System.out.println("loadCalendarAction.java");
+	}
+
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
@@ -16,9 +20,8 @@ public class CalendarAction extends Action {
 		{
 			System.out.println("executeCalendarAction");
 		}
-		CalendarForm calendarForm = (CalendarForm) form;
-		calendarForm.setYear(calendarForm.getYear());
-		calendarForm.setMonth(calendarForm.getMonth());
-		return mapping.getInputForward();
+		CalendarBean calendarBean = (CalendarBean)form;
+		request.setAttribute("msg", calendarBean);
+		return mapping.findForward("index.jsp");
 	}
 }

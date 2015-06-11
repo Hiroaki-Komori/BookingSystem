@@ -9,10 +9,35 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 public class CalendarForm extends ActionForm {
+	{
+		System.out.println("loadCalendarForm.java");
+	}
 	public static final long serialVersionUID = 2L;
 	private int year;
 	private int month;
+	// private ArrayList<String[]> calendarArray = new ArrayList<>();
+	// private String[][] calMatrixRows = new String[6][];
+	// private String[] calMatrixCols = new String[7];
+
 	private String[][] calendarMatrix = new String[6][7];
+
+	// private CalendarBean[] calBean = null;
+
+	// public String[][] getCalMatrixRows() {
+	// return calMatrixRows;
+	// }
+	//
+	// public void setCalMatrixRows(String[][] calMatrixRows) {
+	// this.calMatrixRows = calMatrixRows;
+	// }
+	//
+	// public String[] getCalMatrixCols() {
+	// return calMatrixCols;
+	// }
+	//
+	// public void setCalMatrixCols(String[] calMatrixCols) {
+	// this.calMatrixCols = calMatrixCols;
+	// }
 
 	public void setCalendarMatrix(int year, int month) {
 		this.year = year;
@@ -64,12 +89,24 @@ public class CalendarForm extends ActionForm {
 				}
 			}
 		}
-		// for (String[] strArray : calendarMatrix) {
-		// for (String str : strArray) {
-		// System.out.print(str + "\t");
+
+		// int row = 0;
+		// int col = startDay - 1;
+		// for (int date = 1; date < lastDate; date++) {
+		// calendarMatrix[row][col] = String.valueOf(date);
+		// if (col == 6) {
+		// row++;
+		// col = 0;
+		// } else {
+		// col++;
 		// }
-		// System.out.println();
 		// }
+		for (String[] strArray : calendarMatrix) {
+			for (String str : strArray) {
+				System.out.print(str + "\t");
+			}
+			System.out.println();
+		}
 	}
 
 	@Override
