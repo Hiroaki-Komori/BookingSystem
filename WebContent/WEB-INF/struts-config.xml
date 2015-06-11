@@ -4,82 +4,65 @@
 
 <struts-config>
 	<form-beans>
-	<form-bean
-		name="reserveform"
-		type="jp.levelfive.bookingsystem.ReserveForm">
-		<form-property name="title" type="java.lang.String"/>
-		<form-property name="name" type="java.lang.String"/>
-		<form-property name="month" type="int" />
-		<form-property name="day" type="int" />
-		<form-property name="hourFrom" type="int" />
-		<form-property name="minFrom" type="int" />
-		<form-property name="hourTo" type="int" />
-		<form-property name="minTo" type="int" />
-		<form-property name="password" type="java.lang.String"/>
-	</form-bean>
+		<form-bean name="reserveform" type="jp.levelfive.bookingsystem.ReserveForm">
+			<form-property name="title" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="month" type="int" />
+			<form-property name="day" type="int" />
+			<form-property name="hourFrom" type="int" />
+			<form-property name="minFrom" type="int" />
+			<form-property name="hourTo" type="int" />
+			<form-property name="minTo" type="int" />
+			<form-property name="password" type="java.lang.String" />
+		</form-bean>
 
-	<form-bean
-		name="calendarform"
-		type="jp.levelfive.bookingsystem.CalendarForm">
-		<form-property name="year" type="int" />
-		<form-property name="month" type="int" />
-		<form-property name="calendarMatrix" type="String[][]" />
-	</form-bean>
+		<form-bean name="calendarform" type="jp.levelfive.bookingsystem.CalendarForm">
+			<form-property name="year" type="int" />
+			<form-property name="month" type="int" />
+			<form-property name="calendarMatrix" type="String[][]" />
+		</form-bean>
 
-	<form-bean
-		name="timetableform"
-		type="jp.levelfive.bookingsystem.TimeTableForm">
-		<form-property name="date" type="int"/>
-		<form-property name="timeTable" type="int[][]"/>
-		<form-property name="reserveList" type="java.util.ArrayList"/>
-	</form-bean>
+		<form-bean name="timetableform" type="jp.levelfive.bookingsystem.TimeTableForm">
+			<form-property name="date" type="int" />
+			<form-property name="timeTable" type="int[][]" />
+			<form-property name="reserveList" type="java.util.ArrayList" />
+		</form-bean>
 
 	</form-beans>
 
 
 	<action-mappings>
-	<action
-		name="reserveform"
-		path="/reserve"
-		type="jp.levelfive.bookingsystem.ReserveAction"
-		scope="request"
-		input="/index.jsp">
-		<forward name="index.jsp" path="/index.jsp" />
+		<action name="reserveform" path="/reserve"
+			type="jp.levelfive.bookingsystem.ReserveAction" scope="request"
+			input="/index.jsp">
+			<forward name="index.jsp" path="/index.jsp" />
 		</action>
 
-	<action
-		name="calendarform" path="/calendar"
-		type="jp.levelfive.bookingsystem.CalendarAction"
-		scope="request"
-		input="/index.jsp">
-		<forward name="index.jsp" path="/index.jsp"/>
-	</action>
+		<action name="calendarform" path="/calendar"
+			type="jp.levelfive.bookingsystem.CalendarAction" scope="request"
+			input="/index.jsp">
+			<forward name="index.jsp" path="/index.jsp" />
+		</action>
 
-	<action
-		name="calendarform" path="/forward"
-		type="jp.levelfive.bookingsystem.SetCalendarForward"
-		scope="request"
-		input="/index.jsp"
-		forward="index.jsp">
-		<forward name="index.jsp" path="../index.jsp"/>
-	</action>
+		<action name="calendarform" path="/forward"
+			type="jp.levelfive.bookingsystem.SetCalendarForward" scope="request"
+			input="/index.jsp" forward="index.jsp">
+			<forward name="index.jsp" path="../index.jsp" />
+		</action>
 
-	<action name="calendarform" path="/back"
-		type="jp.levelfive.bookingsystem.SetCalendarBack"
-		scope="request"
-		input="/index.jsp">
-		<forward name="index.jsp" path="/index.jsp"/>
-	</action>
+		<action name="calendarform" path="/back"
+			type="jp.levelfive.bookingsystem.SetCalendarBack" scope="request"
+			input="/index.jsp">
+			<forward name="index.jsp" path="/index.jsp" />
+		</action>
 
-	<action name="timetableform" path="/settimetable"
-		type="jp.levelfive.bookingsystem.SetTimeTable"
-		scope="request"
-		input="/index.jsp">
-		<forward name="index.jsp" path="/index.jsp"/>
-	</action>
+		<action name="timetableform" path="/settimetable"
+			type="jp.levelfive.bookingsystem.SetTimeTable" scope="request" input="/index.jsp">
+			<forward name="index.jsp" path="/index.jsp" />
+		</action>
 
 	</action-mappings>
 
-	<message-resources parameter="jp.levelfive.bookingsystem.MessageResources"/>
+	<message-resources parameter="jp.levelfive.bookingsystem.MessageResources" />
 
 </struts-config>
