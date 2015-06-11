@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class ReserveDAO {
 
-	public static void main(String[] args) {
+	public static int SearchDate(int date) {
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultset = null;
@@ -40,5 +40,32 @@ public class ReserveDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static String Reserve(int date, int starttime, int endtime, int roomnumber, int password,int name, long title) {
+		Connection connection = null;
+		Statement statement = null;
+		int flag = 0;
+		
+		try {String url = "jdbc:postgresql://localhost/booking";
+			connection = DriverManager.getConnection(url, "levelfive",
+					"levelfive");
+			statement = connection.createStatement();
+			String sql = "select max(id) from reserve";
+			int i = statement.executeQuery(sql);
+			// 予約データをテーブルに挿入する
+			String sql = "insert into reserve values (" + i + ", ?, ?, ?, ?, ?, ?, ?)";
+			flag = statement.executeUpdate(sql);
+			return flag;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultset.close();
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 	}
 }
